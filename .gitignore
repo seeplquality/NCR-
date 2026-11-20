@@ -34,3 +34,7 @@ test_output.*
 node_modules
 .env
 dist
+
+node_modules
+.env
+dist
