@@ -1,0 +1,1124 @@
+[
+  {
+    "wo": "SEEPL/WI01/01/26-27",
+    "project": "M/S.WHEELS INDIA LTD CHENNAI,PADI",
+    "panels": [
+      "PDB-1 PANEL",
+      "PDB-2 PANEL",
+      "SSB-1 PANEL",
+      "SSB-2 PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/BI01/02/26-27",
+    "project": "M/S.PROPOSED FOUNDRY PLANT",
+    "panels": [
+      "PSSB-BAY-01",
+      "PSSB-BAY-6/PS",
+      "PSSB-MELT-MSO/6",
+      "PSSB-BAY-6",
+      "INDUSTRIAL SOCKET PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/GMS01/03/26-27",
+    "project": "M/S. GMS ELEGANT BUILDERS PVT LTD",
+    "panels": [
+      "METERING PANEL & BOARD",
+      "LT PANEL & BOARD",
+      "POWER DISTRIBUTION MODULE PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/SS/PL01/04/26-27",
+    "project": "M/S.SWING STETTER",
+    "panels": [
+      "ENCLOSURE BOX"
+    ]
+  },
+  {
+    "wo": "SEEPL/SEM 01/05/26-27",
+    "project": "M/S.SEEMA ELECTRICALS",
+    "panels": [
+      "100A ENCLOSURE BOX"
+    ]
+  },
+  {
+    "wo": "SEEPL/GMS02/06/26-27",
+    "project": "M/S.GMS ELEGANT BUILDERS PVT LTD",
+    "panels": [
+      "FOOD COURT STARTER PANEL",
+      "CHILLER ROOM PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/SE01/07/26-27",
+    "project": "M/S.WINGS SCIENTIFIC SOLUTION",
+    "panels": [
+      "SERVICE EB METERING PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/PTS01/07/26-27",
+    "project": "M/S. PTS POWER TRONIC SOLUTION PVT LTD",
+    "panels": [
+      "250A MCCB ISOLATOR ENCLOSURE"
+    ]
+  },
+  {
+    "wo": "SEEPL/SEL02/KRR01/008/26-27",
+    "project": "M/S.KRR ENERGY PVT LTD.COIMBATORE",
+    "panels": [
+      "24H STREET LIGHT LINEAR PANEL",
+      "250A EB & DG MCOS PANEL",
+      "250A SFU ENCLOSURE",
+      "FEEDER PILLER PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/SRIRAM 01/09/26-27",
+    "project": "M/S.SRI RAM ENGINEERS",
+    "panels": [
+      "METERING PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/MALAR/01/26-27",
+    "project": "M/S.MALARVIZHI COMMERCIAL COMPLEX",
+    "panels": [
+      "PSB-AUX",
+      "MPCC-MALABAR",
+      "350 KVAR HYBRID APFCR PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/ELC001/COMCAST/012/26-27",
+    "project": "M/S.COMCAST",
+    "panels": [
+      "UPS INCOMING PANEL",
+      "POWER PANEL",
+      "UPS OUTGOING PANEL 210V",
+      "UPS OUTGOING PANEL 415V"
+    ]
+  },
+  {
+    "wo": "SEEPL/HIRA01/16/26-27",
+    "project": "M/S.HOUSE OF HIRANANDA",
+    "panels": [
+      "FUSE CARRIER ENCLOSURE",
+      "320A MCCB ENCLOSURE",
+      "SUB PANEL OUTDOOR TYPE"
+    ]
+  },
+  {
+    "wo": "SEEPL/VINAY01/17/26-27",
+    "project": "M/S.VINAY ENTERPRISES",
+    "panels": [
+      "SERVICE MATERIAL PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/SPR01/18/26-27",
+    "project": "M/S.MOI PROJECT SPR",
+    "panels": [
+      "LIFT PANEL-01",
+      "LIFT PANELS-01",
+      "LIFT PANELS-02"
+    ]
+  },
+  {
+    "wo": "SEEPL/KRR/13/26-27",
+    "project": "M/S.KRR AIR PVT LTD",
+    "panels": [
+      "ATTACHMENT PART FOR EXCITING MAIN PANEL",
+      "VARICON HYDRAGON PROJECT",
+      "METERING PANEL",
+      "MAIN PANEL",
+      "VARICON HYDRAGON",
+      "ATTACHMENT PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/FOXCONN/019/26-27",
+    "project": "M/S.FOXCONN ELEPHANT PARK B 1-2F",
+    "panels": [
+      "B01-2F-MP1-1 TO B01-2F--MPS-14",
+      "B01-2F-MP5-1"
+    ]
+  },
+  {
+    "wo": "SEEPL/VED01/MYSORE/20/26-27",
+    "project": "ONCOLOGY BLOCK M/S. VEDHA ELECTRICALS",
+    "panels": [
+      "BUNKER PANEL-1",
+      "UTILITY PANEL-2"
+    ]
+  },
+  {
+    "wo": "SEEPL/FOXCONN HYD/TTE01/11/26-27",
+    "project": "M/S.FOXCONN TTE HYDERABAD",
+    "panels": [
+      "A2-2KTPD.1.1",
+      "A2-2MP11",
+      "A2-2KTDP2.1"
+    ]
+  },
+  {
+    "wo": "SEEPL/VINAY02/21/26-27",
+    "project": "M/S.VINAY ENTERPRISES",
+    "panels": [
+      "250A MCCB ENCLOSURE"
+    ]
+  },
+  {
+    "wo": "SEEPL/MALAR/010/26-27",
+    "project": "M/S.MALAR VIZHI COMMERCIAL",
+    "panels": [
+      "LIFT PANEL 1-2",
+      "MPCC MALABAR",
+      "PSB-AUX",
+      "350 KVAR HYBRID APFCR PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/EPC/01/022/26-27",
+    "project": "M/S.CENTURY PLY",
+    "panels": [
+      "ATTACHMENT PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/ACC01/023/26-27",
+    "project": "M/S.HK ENTERPRICES",
+    "panels": [
+      "CONTROL BOX"
+    ]
+  },
+  {
+    "wo": "SEEPL/HIRA02/24/26-27",
+    "project": "M/S. HIRA NANDHINI SETHUPAKKAM",
+    "panels": [
+      "LSB-B01,PSB-B01",
+      "MSB-B01"
+    ]
+  },
+  {
+    "wo": "SEEPL/ONEAL/02/P-217/26-27",
+    "project": "M/S.ONE ALPHA",
+    "panels": [
+      "LSB-OA",
+      "PSSB-DL/1,2,3,4",
+      "PSSB-PUMP/1",
+      "PSSB-PUMP/2"
+    ]
+  },
+  {
+    "wo": "SEEPL/SSIPL/001/25/26-27",
+    "project": "M/S.RITHWIK PROJECTS",
+    "panels": [
+      "2-STARTER PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/SSIPL/002/26/26-27",
+    "project": "M/S.WOG TECHNOLOGIES SCHWING STETTER",
+    "panels": [
+      "MV PANEL FOR M45Z/B0 OUTDOOR"
+    ]
+  },
+  {
+    "wo": "SEEPL/SSIPL/003/27/26-27",
+    "project": "M/S. SCHWING STETTER,RSY PROJECT",
+    "panels": [
+      "MV PANEL FOR M1BP OUTDOOR"
+    ]
+  },
+  {
+    "wo": "SEEPL/TTE02/FOXBAN/28/26-27",
+    "project": "M/S. FOXCONN BANGLORE",
+    "panels": [
+      "B2-2F-MP-15-1,B2-2F-MP 15-5,B2-2F-MP 17-4 B2-2F-MP18-4",
+      "B2-2F-MP 1-2 B2-MP 18-5",
+      "B2-2F-MP18-3",
+      "B2-2F-MP-19",
+      "B2-2F-MP-20"
+    ]
+  },
+  {
+    "wo": "SEEPL/SSPL/04/29/26-27",
+    "project": "M/S.SPS CONSTRUCTION",
+    "panels": [
+      "2-STARTER PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/CPOND01/30/26-27",
+    "project": "M/S.CHANGE POND",
+    "panels": [
+      "EARTH LINK ADAPTER BOX"
+    ]
+  },
+  {
+    "wo": "SEEPL/VNG/03/31/26-27",
+    "project": "M/S.VINAYAGA ENTERPRISES",
+    "panels": [
+      "EB PG COS PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/NEL01/32/26-27",
+    "project": "M/S.NELCAST LIMITED",
+    "panels": [
+      "PUMP PANEL-1",
+      "PUMP PANEL-2"
+    ]
+  },
+  {
+    "wo": "SEEPL/SSIPL04/33/26-27",
+    "project": "M/S.SCHWING STETTER",
+    "panels": [
+      "MV PANEL-M1BP COS"
+    ]
+  },
+  {
+    "wo": "SEEPL/VED01/MVS/20/26-27",
+    "project": "M/S.VEDHA ELECTRICALS",
+    "panels": [
+      "CA-HVAC PANEL TERRACE",
+      "MDB-FF,SF,TF",
+      "AC SUB PANEL GF",
+      "AC SUB PANEL -1F,2F,3F",
+      "UPS OUTGOING PANEL",
+      "SMDB PANEL",
+      "MDB-GF",
+      "UPS INCOMING PANEL",
+      "APFCR PANEL",
+      "DG SYNCHRONISING PANEL",
+      "MAIN LT PANEL",
+      "CHILLER PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/WI02/34/26-27",
+    "project": "M/S.WHEELS INDIA LTD",
+    "panels": [
+      "DG PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/HSI/35/26-27",
+    "project": "M/S.HSI AUTOMOTIVES PVT LTD",
+    "panels": [
+      "MAIN PANEL",
+      "MLDB PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/HET02/36/26-27",
+    "project": "M/S.HEANTHIUM ANDHRA",
+    "panels": [
+      "BUS DUCT PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/BH01/37/26-27",
+    "project": "M/S.BHARATHI HOSPITALS",
+    "panels": [
+      "ATTACHMENT PANEL",
+      "CHILLER PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/SPR01/38/26-27",
+    "project": "M/S.SPR CONSTRUCTIONS",
+    "panels": [
+      "CT METERING PANEL 1 & 2"
+    ]
+  },
+  {
+    "wo": "SEEPL/VED01/MVS20/26-27",
+    "project": "M/S.VEDHA ELECTRICAL",
+    "panels": [
+      "200A ENCLOSURE",
+      "UPS OUTPUT PANEL BUNKER ROOM"
+    ]
+  },
+  {
+    "wo": "SEEPL/VINAY02/39/26-27",
+    "project": "M/S.VINAYAGA ENTERPRISES",
+    "panels": [
+      "100 A FP MCCB ENCLOSURE"
+    ]
+  },
+  {
+    "wo": "SEEPL/SS/PL03/40/26-27",
+    "project": "M/S.SWING STETTER",
+    "panels": [
+      "MV PANEL 630A MCOS",
+      "171 KVAR - APFCR",
+      "121 KVAR - APFCR"
+    ]
+  },
+  {
+    "wo": "SEEPL/CENTURY/41/26-27",
+    "project": "M/S.CENTURY PLY",
+    "panels": [
+      "3200 A BUSDUCT"
+    ]
+  },
+  {
+    "wo": "SEEPL/JOS/42/26-27",
+    "project": "M/S.JOSEPH ELECTRICALS",
+    "panels": [
+      "MAIN DISTRIBUTION"
+    ]
+  },
+  {
+    "wo": "SEEPL/VINAYAGA/21/26-27",
+    "project": "M/S.VINAYAGA ENTERPRISES",
+    "panels": [
+      "250 A FP MCCB ENCLOSURE"
+    ]
+  },
+  {
+    "wo": "SEEPL/SS/43/26-27",
+    "project": "M/S.SWING STETTER",
+    "panels": [
+      "2500 PS MIXER",
+      "BATCHING MAIN PANEL",
+      "CONTROL BOX",
+      "PLC CONTROL PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/FOX/44/26-27",
+    "project": "M/S.FOXCONN MARS",
+    "panels": [
+      "B04-1AF3",
+      "1KX3 (OUTDOOR TYPE)"
+    ]
+  },
+  {
+    "wo": "SEEPL/SS1PL/45/26-27",
+    "project": "M/S.SCHWING STETTER",
+    "panels": [
+      "2-STARTER PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/ZOM/49/26-27",
+    "project": "M/S.ZOMATO",
+    "panels": [
+      "MPCC PANEL",
+      "APFCR (420 KVAR)"
+    ]
+  },
+  {
+    "wo": "SEEPL/GMS01/46/26-27",
+    "project": "M/S.GMS ELEGANT",
+    "panels": [
+      "LT PANEL BOARD"
+    ]
+  },
+  {
+    "wo": "SEEPL/SS2PL/47/26-27",
+    "project": "M/S.SCHWING STETTER",
+    "panels": [
+      "2 STARTER PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/PTS/48/26-27",
+    "project": "M/S.PTS POWERTRONICS",
+    "panels": [
+      "ACB CHANGE OVER PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/ELGI/50/26-27",
+    "project": "M/S.ELGI",
+    "panels": [
+      "CONTROL PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/GL001/51/26-27",
+    "project": "M/S.GLOBAL INDIA",
+    "panels": [
+      "ATS BOX"
+    ]
+  },
+  {
+    "wo": "SEEPL/KVV01/52/26-27",
+    "project": "M/S.KVV",
+    "panels": [
+      "100A SFU ENCLOSURE"
+    ]
+  },
+  {
+    "wo": "SEEPL/FOR01/53/26-27",
+    "project": "M/S.FORMATION PROJECT",
+    "panels": [
+      "2 ALBG PANEL",
+      "APBGKT PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/GMS01/54/26-27",
+    "project": "M/S.GMS ELEGANT",
+    "panels": [
+      "400A POWER PANEL",
+      "160A POWER PANEL",
+      "250A POWER PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/CEN01/55/26-27",
+    "project": "M/S.CENTURY PLY LIMITED, ANDHRA PRADESH",
+    "panels": [
+      "APFCR PANEL(720 KVAR)"
+    ]
+  },
+  {
+    "wo": "SEEPL/SP01/56/26-27",
+    "project": "M/S.SPINKS SOFT TECH PVT LTD",
+    "panels": [
+      "THIXO PANEL",
+      "PDB5 PANEL",
+      "MAIN LT PANEL",
+      "MOUNDING PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/NELO/57/26-27",
+    "project": "M/S.NELCAST",
+    "panels": [
+      "5000A TRANSFORMER BUSDUCT"
+    ]
+  },
+  {
+    "wo": "SEEPL/HYUND/58/26-27",
+    "project": "M/S.HYUNDAI STEEL PIPE",
+    "panels": [
+      "MAIN EXISTING PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/VED01/20/26-27",
+    "project": "M/S.APOLLO BGS HOSPITAL MYSORE",
+    "panels": [
+      "PET CT ROOM",
+      "UPS ISOLATOR INPUT PANEL",
+      "UPS ISOLATOR OUTPUT PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/FOX01/59/26-27",
+    "project": "M/S.FOXCONN HYDERABAD",
+    "panels": [
+      "A3-2JSP1-A3 2JSP2",
+      "A3-2JSP1-1",
+      "A3-4JSP1-2"
+    ]
+  },
+  {
+    "wo": "SEEPL/MOT01/61/26-27",
+    "project": "M/S.MOTOLINK INDIA PVT LTD",
+    "panels": [
+      "SUB PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/NAT01/60/26-27",
+    "project": "M/S.NATIONAL INSTITUTE OF TECHNOLOGY",
+    "panels": [
+      "SEMI PERMANENT BLOCK PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/SPR06/179/26-27",
+    "project": "M/S.SPR VILLA BINNY MALL",
+    "panels": [
+      "DG CO-PANEL-3"
+    ]
+  },
+  {
+    "wo": "SEEPL/SS/62/26-27",
+    "project": "M/S.KARM RMC",
+    "panels": [
+      "MV PANEL 630A"
+    ]
+  },
+  {
+    "wo": "SEEPL/SS/63/26-27",
+    "project": "M/S.JAY MATAJI CONSTRUCTIONS",
+    "panels": [
+      "MV PANEL 630A MANUAL COS"
+    ]
+  },
+  {
+    "wo": "SEEPL/SS/64/26-27",
+    "project": "M/S.SHRI KRIPA ENTERPRISES",
+    "panels": [
+      "MAIN PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/SS/65/26-27",
+    "project": "M/S.RSY CONSTRUCTION",
+    "panels": [
+      "MV PANEL (OUTDOOR)"
+    ]
+  },
+  {
+    "wo": "SEEPL/SS/66/26-27",
+    "project": "M/S.SWING STETTER",
+    "panels": [
+      "136 KVAR PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/FOXCONN/HYD/67/26-27",
+    "project": "M/S.FOXCONN HYDERABAD",
+    "panels": [
+      "EARTH LINK BOX"
+    ]
+  },
+  {
+    "wo": "SEEPL/SS/68/26-27",
+    "project": "M/S.SWING STETTER",
+    "panels": [
+      "2 STARTER PANEL"
+    ]
+  },
+  {
+    "wo": "SEEPL/ARK/69/26-27",
+    "project": "M/S.ARK HOTEL TRICHY",
+    "panels": [
+      "MCC-F (MODIFICATION PANEL)"
+    ]
+  },
+  {
+    "wo": "SEEPL/SHARON/41/26-27",
+    "project": "M/S.SHARON PLY WOOD",
+    "panels": [
+      "1600A DG-2-B BUSDUCT"
+    ]
+  },
+  {
+    "wo": "P-179",
+    "project": "M/S.SPR VILLA",
+    "panels": [
+      "DG COS PANEL-4",
+      "DG  COS PANEL-5",
+      "DG  COSPANEL-6"
+    ]
+  },
+  {
+    "wo": "70",
+    "project": "M/S.WINAJES CONSTRUCTION",
+    "panels": [
+      "400A MCCB ENCLOSURE"
+    ]
+  },
+  {
+    "wo": "71",
+    "project": "M/S.VEDHA KENSETSU EPC PROJECTS",
+    "panels": [
+      "HOSTEL BLOCK  PANEL",
+      "AC PANEL",
+      "MAIN PANEL",
+      "LIGHTING POWER PANEL",
+      "AC PANEL RIGHT WING & LEFT WING",
+      "LIGHTING & POWER PANEL"
+    ]
+  },
+  {
+    "wo": "72",
+    "project": "M/S.FOXCONN TTE HYDRABAD",
+    "panels": [
+      "DG PANEL OUTDOOR"
+    ]
+  },
+  {
+    "wo": "73",
+    "project": "M/S.SCHWING STETTER",
+    "panels": [
+      "MV PANEL OUTDOOR"
+    ]
+  },
+  {
+    "wo": "74",
+    "project": "M/S.TIDEL PARK VALLAM",
+    "panels": [
+      "DG MCC PANEL",
+      "PUMP PANEL(OUTDOOR)"
+    ]
+  },
+  {
+    "wo": "75",
+    "project": "M/S.SARAVANA STORE JEWELLERY SHOP",
+    "panels": [
+      "MV PANEL OUTDOOR"
+    ]
+  },
+  {
+    "wo": "76",
+    "project": "M/S.SPR CITY LABOUR HOUSE",
+    "panels": [
+      "COS PANEL LABOUR HOUSE"
+    ]
+  },
+  {
+    "wo": "77",
+    "project": "M/S.HYUNDAI PVT LTD(SUNGOO ENGINEERING)",
+    "panels": [
+      "90KVA UPS DISTRIBUTION BOARD",
+      "150KVA UPS DISTRIBUTION BOARD",
+      "60KVA UPS DISTRIBUTION BOARD",
+      "90KVA BYPASS PANEL",
+      "150KVA BYPASS PANEL",
+      "60KVA BYPASS PANEL"
+    ]
+  },
+  {
+    "wo": "78",
+    "project": "M/S.NA AGENCY",
+    "panels": [
+      "METERING PANEL"
+    ]
+  },
+  {
+    "wo": "79",
+    "project": "M/S.WHEELS INDIA LTD",
+    "panels": [
+      "PDB PANEL",
+      "SSB PANEL"
+    ]
+  },
+  {
+    "wo": "80",
+    "project": "M/S.MIOT HOSPITAL",
+    "panels": [
+      "1250A OUTDOOR PANEL",
+      "2000A OUTDOOR PANEL"
+    ]
+  },
+  {
+    "wo": "82",
+    "project": "M/S.GMS ELEGANT BUILDERSL",
+    "panels": [
+      "TEMPORY PANEL",
+      "LT PANEL BOARD"
+    ]
+  },
+  {
+    "wo": "83",
+    "project": "M/S.ARUL CONSULTANT",
+    "panels": [
+      "METERING PANEL"
+    ]
+  },
+  {
+    "wo": "84",
+    "project": "M/S.KALEESUWARI",
+    "panels": [
+      "EARTH LINK BOX"
+    ]
+  },
+  {
+    "wo": "86",
+    "project": "M/S.SRI RAM ENGINEERING",
+    "panels": [
+      "METERING PANEL"
+    ]
+  },
+  {
+    "wo": "87",
+    "project": "M/S.WHEELS INDIA LTD",
+    "panels": [
+      "1600A END FEED UNIT"
+    ]
+  },
+  {
+    "wo": "88",
+    "project": "M/S.KPR INSTITUTE",
+    "panels": [
+      "11KW DOL STARTER PANEL"
+    ]
+  },
+  {
+    "wo": "89",
+    "project": "M/S.SIDVIN CONSTRUCTION",
+    "panels": [
+      "MV PANEL(H1J BP INDOOR PANEL)"
+    ]
+  },
+  {
+    "wo": "90",
+    "project": "M/S.SIDVIN CONSTRUCTION",
+    "panels": [
+      "136KVAR APFCR PANEL(H1J BP INDOOR PANEL)"
+    ]
+  },
+  {
+    "wo": "91",
+    "project": "M/S.MY HOME",
+    "panels": [
+      "170KVAR APFCR PANEL"
+    ]
+  },
+  {
+    "wo": "92",
+    "project": "M/S.MY HOME",
+    "panels": [
+      "MV PANEL FOR M2.5 PLANT"
+    ]
+  },
+  {
+    "wo": "93",
+    "project": "M/S.APOLLO HOSPITAL",
+    "panels": [
+      "CABLE ADAPTER BOX"
+    ]
+  },
+  {
+    "wo": "94",
+    "project": "M/S.GLOBAL INDIA",
+    "panels": [
+      "DISTRIBUTION BOARD"
+    ]
+  },
+  {
+    "wo": "95",
+    "project": "M/S.KRISHNA KUMAR",
+    "panels": [
+      "MCB ENCLOSURE BOX"
+    ]
+  },
+  {
+    "wo": "96",
+    "project": "M/S.GALFAR ENGINEERING",
+    "panels": [
+      "MAIN PANEL(OUTDOOR)"
+    ]
+  },
+  {
+    "wo": "97",
+    "project": "M/S.PAARMAAL",
+    "panels": [
+      "100A INDOOR ENCLOSURE"
+    ]
+  },
+  {
+    "wo": "98",
+    "project": "M/S.SRI SIDHARDHA CONSTRUCTIONS",
+    "panels": [
+      "2 STARTER PANEL"
+    ]
+  },
+  {
+    "wo": "99",
+    "project": "M/S.SPINKS AUTOMATIONS",
+    "panels": [
+      "20AP SLD STARTER",
+      "200A FUSE BOX"
+    ]
+  },
+  {
+    "wo": "100",
+    "project": "M/S.BOYS HOSTEL BUILDING @ AVINASHI",
+    "panels": [
+      "MSB-BH",
+      "USB-BH",
+      "PSB-PUMP",
+      "LIFT-PANEL-1,2,3,4,5,6",
+      "LPSB-GF-12F"
+    ]
+  },
+  {
+    "wo": "101",
+    "project": "M/s. SPR VILA,BINNY MILL",
+    "panels": [
+      "DG COS PANEL-7",
+      "DG COS PANEL-8"
+    ]
+  },
+  {
+    "wo": "102",
+    "project": "M/s. HIRANANDANI-ZOMOTO",
+    "panels": [
+      "BUS DUCT"
+    ]
+  },
+  {
+    "wo": "103",
+    "project": "M/s. PAARMAAL",
+    "panels": [
+      "DG-1 BUSDUCT"
+    ]
+  },
+  {
+    "wo": "104",
+    "project": "M/s. WHEELS INDIA LTD, PADI",
+    "panels": [
+      "SUB PANEL"
+    ]
+  },
+  {
+    "wo": "105",
+    "project": "M/s. UNITECH",
+    "panels": [
+      "MV PANEL(OUTDOOR)"
+    ]
+  },
+  {
+    "wo": "106",
+    "project": "M/s. SPR CONSTRUCTIONS OVT LTD",
+    "panels": [
+      "CT-METERING PANEL-TOWER C",
+      "CT-METERING PANEL-TOWER D"
+    ]
+  },
+  {
+    "wo": "107",
+    "project": "FOXCONN HYDERABAD",
+    "panels": [
+      "AZ-2MP11-1",
+      "AZ-2KTDP1-2",
+      "160A ENCLOSURE"
+    ]
+  },
+  {
+    "wo": "108",
+    "project": "M/s. SRI VINAYAGA ELECTRICALS",
+    "panels": [
+      "EB METERING PANEL"
+    ]
+  },
+  {
+    "wo": "109",
+    "project": "",
+    "panels": [
+      "AZ-GF-MP6-1 - MP6-2, AZ-GF-MP7-1",
+      "AZ-GF-ALZ",
+      "AZ-GF-AL14 - AL16",
+      "AZ-GF-MP7",
+      "AZ-GF-MP6-3 - MP6-8, AZ-GF-MP7-2 - MP7-7",
+      "AZ-GF-MP6",
+      "AZ-GF-FFVZ",
+      "AZ-GF-FFV7 - FFV8"
+    ]
+  },
+  {
+    "wo": "110",
+    "project": "M/s. AJ ELECTRICALS, HYDERABAD",
+    "panels": [
+      "JUNCTION BOX FLOOR",
+      "150x150x48",
+      "250x250x48",
+      "380x380x48",
+      "450x450x48"
+    ]
+  },
+  {
+    "wo": "111",
+    "project": "M/s. FOXCONN, CHENNAI",
+    "panels": [
+      "SINGLE PHASE DB(20WAY)",
+      "THREE PHASE DB(20WAY)"
+    ]
+  },
+  {
+    "wo": "112",
+    "project": "M/s.FATHIMA COLLEGE",
+    "panels": [
+      "ADOPTOR BOX"
+    ]
+  },
+  {
+    "wo": "113",
+    "project": "M/s.SCHWING STETTER",
+    "panels": [
+      "M1 MV PANEL 630A COS INDOOR",
+      "."
+    ]
+  },
+  {
+    "wo": "114",
+    "project": "M/s. SPR VILLA",
+    "panels": [
+      "EB METERING PANEL-2",
+      "EB METERING PANEL-3",
+      "EB METERING PANEL-5",
+      "EB METERING PANEL-6",
+      "EB METERING PANEL-8"
+    ]
+  },
+  {
+    "wo": "115",
+    "project": "M/s.GMS ELEGANT BUILDERS",
+    "panels": [
+      "TEMPORARY OUTDOOR PANEL"
+    ]
+  },
+  {
+    "wo": "116",
+    "project": "M/s.SPINKS SOFTECH",
+    "panels": [
+      "1600A-DG TO MAIN PANEL BUSDUCT"
+    ]
+  },
+  {
+    "wo": "117",
+    "project": "M/s.BORG WARNER",
+    "panels": [
+      "2500A BUSDUCT"
+    ]
+  },
+  {
+    "wo": "118",
+    "project": "M/s.SURESH COMMERCIAL SHOP",
+    "panels": [
+      "METERING BOX"
+    ]
+  },
+  {
+    "wo": "119",
+    "project": "M/s.FOXCONN HYDERABAD",
+    "panels": [
+      "A2-2KTDP1.2"
+    ]
+  },
+  {
+    "wo": "120",
+    "project": "M/s.BORG WARNER",
+    "panels": [
+      "TRF DUCT"
+    ]
+  },
+  {
+    "wo": "121",
+    "project": "M/s.SPR MOI TERRACE PANEL",
+    "panels": [
+      "TERRACE EMG PANEL -1,2,3,4"
+    ]
+  },
+  {
+    "wo": "122",
+    "project": "M/S. DAESUNG AUTOMOTIVE",
+    "panels": [
+      "MAIN MV PANEL"
+    ]
+  },
+  {
+    "wo": "123",
+    "project": "M/s.KPR SCHOOL",
+    "panels": [
+      "END FEED UNIT - 1&2"
+    ]
+  },
+  {
+    "wo": "124",
+    "project": "M/s.HSI AUTOMOTIVES PVT LTD",
+    "panels": [
+      "PDB PANEL"
+    ]
+  },
+  {
+    "wo": "125",
+    "project": "M/s.GMS ELEGANT BUILDERS PVT LTD",
+    "panels": [
+      "LIFT PANEL"
+    ]
+  },
+  {
+    "wo": "126",
+    "project": "M/s.MATADEE FREE TRADE ZONE PVT LTD",
+    "panels": [
+      "SUB PANEL"
+    ]
+  },
+  {
+    "wo": "127",
+    "project": "M/s.HOUSE OF HIRANADHINI",
+    "panels": [
+      "SYNCHRONIZING PANEL",
+      "ATTACHMENT PANEL"
+    ]
+  },
+  {
+    "wo": "128",
+    "project": "M/S. ASHOK LEYLAND DATA CENTRE",
+    "panels": [
+      "USB-DC",
+      "MSB-DC",
+      "LPSB-DC",
+      "PSB-WRF",
+      "250A INDOOR ENCLOSURE",
+      "40-633A OUTDOOR ENCLOSURE"
+    ]
+  },
+  {
+    "wo": "129",
+    "project": "M/s.FOXCONN CHENNAI",
+    "panels": []
+  },
+  {
+    "wo": "130",
+    "project": "M/S. FOXCONN KK PARK",
+    "panels": [
+      "A2-2JSP1",
+      "A2-2JSP1-1",
+      "B2-1JSP1,B2-2JSP1,B2-2JSP2",
+      "B2-1JSP1-1,B2-2JSP1-1,B2-2JSP2-1"
+    ]
+  },
+  {
+    "wo": "131",
+    "project": "M/s.RKCPL",
+    "panels": [
+      "2-STARTER PANEL"
+    ]
+  },
+  {
+    "wo": "132",
+    "project": "M/s.FOXCONN HYDERABAD",
+    "panels": [
+      "B2-1MP9-5",
+      "B2-EFJP-1",
+      "A2-EFJP-1, B2-EFJP-2"
+    ]
+  },
+  {
+    "wo": "133",
+    "project": "M/s.TVS SAND AGGREGATE",
+    "panels": [
+      "2-STARTER PANEL"
+    ]
+  },
+  {
+    "wo": "134",
+    "project": "M/s.FUSIONSOLE FOOTWARE PVT LTD",
+    "panels": [
+      "DG SYNC PANEL"
+    ]
+  },
+  {
+    "wo": "135",
+    "project": "M/s.WHEELS INDIA THERVOY KANDIGAN",
+    "panels": [
+      "MAIN PANEL",
+      "ATTACHMENT PANEL"
+    ]
+  },
+  {
+    "wo": "136",
+    "project": "M/s.KPR SCHOOL",
+    "panels": [
+      "PSB-LIFT-1,2,3",
+      "FIRE PUMP PANEL",
+      "DIESEL ENGINE CONTROL PANEL"
+    ]
+  }
+]
