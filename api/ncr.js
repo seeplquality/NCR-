@@ -128,6 +128,7 @@ export default async function handler(req, res) {
         department: data.department || '',
         operatorName: data.operatorName || '',
         problem: data.problem || '',
+        fileType: data.fileType || '',
         imageLink: '',
         docxLink: '',
         pdfLink: '',

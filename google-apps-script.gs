@@ -163,9 +163,9 @@ function doPost(e) {
       }
     }
 
-    // 3. Upload DOCX Report to Google Drive
+    // 3. Upload DOCX Report to Google Drive (ONLY if Word format was chosen)
     let docxLink = "";
-    if (data.docxBase64 && REPORTS_FOLDER_ID && REPORTS_FOLDER_ID !== "YOUR_REPORTS_FOLDER_ID_HERE") {
+    if (data.fileType === "docx" && data.docxBase64 && String(data.docxBase64).trim() !== "" && REPORTS_FOLDER_ID && REPORTS_FOLDER_ID !== "YOUR_REPORTS_FOLDER_ID_HERE") {
       try {
         const docxName = data.docxFileName || (targetNc + ". " + cleanProblem + ".docx");
         docxLink = saveBase64ToDrive(
@@ -179,9 +179,9 @@ function doPost(e) {
       }
     }
 
-    // 4. Upload PDF Report to Google Drive
+    // 4. Upload PDF Report to Google Drive (ONLY if PDF format was chosen)
     let pdfLink = "";
-    if (data.pdfBase64 && REPORTS_FOLDER_ID && REPORTS_FOLDER_ID !== "YOUR_REPORTS_FOLDER_ID_HERE") {
+    if (data.fileType === "pdf" && data.pdfBase64 && String(data.pdfBase64).trim() !== "" && REPORTS_FOLDER_ID && REPORTS_FOLDER_ID !== "YOUR_REPORTS_FOLDER_ID_HERE") {
       try {
         const pdfName = data.pdfFileName || (targetNc + ". " + cleanProblem + ".pdf");
         pdfLink = saveBase64ToDrive(

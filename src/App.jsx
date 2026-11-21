@@ -109,7 +109,7 @@ export default function App() {
 
   // App UI & Cloud state
   const [isGenerating, setIsGenerating] = useState(false);
-  const [generatingFormat, setGeneratingFormat] = useState(null); // 'docx', 'pdf', 'both'
+  const [generatingFormat, setGeneratingFormat] = useState(null); // 'docx' or 'pdf'
   const [successToast, setSuccessToast] = useState(null);
   const [lastIssuedRecord, setLastIssuedRecord] = useState(null);
   const [viewMode, setViewMode] = useState('split'); // 'split' or 'form' or 'preview'
@@ -341,8 +341,8 @@ export default function App() {
     setDuplicateWarning(null);
   };
 
-  // Dual Export Handler: Word (.docx) and PDF (.pdf) with Automatic Google Drive & Sheets Archiving
-  const handleGenerateReport = async (format = 'both') => {
+  // Single-Format Export Handler: Word (.docx) or PDF (.pdf) with Automatic Google Drive & Sheets Archiving
+  const handleGenerateReport = async (format = 'pdf') => {
     if (!ncNumber.trim()) {
       alert('Please specify an NC Number.');
       return;
@@ -390,7 +390,7 @@ export default function App() {
 
       const finalImageBase64 = exportedImage ? exportedImage.dataUrl : rawImageSrc;
 
-      // 1. GENERATE BOTH DOCX BLOB AND PDF BLOB IN BROWSER FIRST
+      // 1. PREPARE REPORT DATA
       const docData = {
         ncNumber: ncNumber.trim(),
         panelName: finalPanelName || 'PANEL',
@@ -408,10 +408,6 @@ export default function App() {
         responsibleSign: responsibleSign || null
       };
 
-      const docxBlob = await generateNcrDocx(docData);
-      const pdfDoc = generateNcrPdf(docData);
-      const pdfBlob = pdfDoc.output('blob');
-
       // Helper to convert blob to base64
       const blobToBase64 = (blob) =>
         new Promise((resolve, reject) => {
@@ -421,12 +417,22 @@ export default function App() {
           reader.readAsDataURL(blob);
         });
 
-      const [docxBase64, pdfBase64] = await Promise.all([
-        blobToBase64(docxBlob),
-        blobToBase64(pdfBlob)
-      ]);
+      // 2. GENERATE ONLY THE REQUESTED FILE FORMAT IN BROWSER
+      let docxBlob = null;
+      let pdfDoc = null;
+      let docxBase64 = null;
+      let pdfBase64 = null;
 
-      // 2. SEND TO SERVER: VERIFY DUPLICATE, UPLOAD FILES TO DRIVE & LOG TO GOOGLE SHEETS
+      if (format === 'docx') {
+        docxBlob = await generateNcrDocx(docData);
+        docxBase64 = await blobToBase64(docxBlob);
+      } else {
+        pdfDoc = generateNcrPdf(docData);
+        const pdfBlob = pdfDoc.output('blob');
+        pdfBase64 = await blobToBase64(pdfBlob);
+      }
+
+      // 3. SEND TO SERVER: VERIFY DUPLICATE, UPLOAD CHOSEN FILE TO DRIVE & LOG TO GOOGLE SHEETS
       const payload = {
         ncNumber: ncNumber.trim(),
         jobNo: jobNo.trim() || 'SEEPL',
@@ -438,10 +444,11 @@ export default function App() {
         department: finalDepartment || 'FABRICATION',
         problem: problem.trim().toUpperCase(),
         imageBase64: finalImageBase64 || null,
-        docxBase64,
-        pdfBase64,
-        docxFileName,
-        pdfFileName
+        fileType: format,
+        docxBase64: format === 'docx' ? docxBase64 : null,
+        pdfBase64: format === 'pdf' ? pdfBase64 : null,
+        docxFileName: format === 'docx' ? docxFileName : null,
+        pdfFileName: format === 'pdf' ? pdfFileName : null
       };
 
       let registerData = null;
@@ -525,11 +532,8 @@ export default function App() {
         registerData = await registerRes.json();
       }
 
-      // 3. TRIGGER LOCAL DOWNLOAD AS REQUESTED BY USER
-      const downloadedFiles = [];
-
-      // A. Word (.docx) Export
-      if (format === 'docx' || format === 'both') {
+      // 4. TRIGGER LOCAL DOWNLOAD AS REQUESTED BY USER
+      if (format === 'docx' && docxBlob) {
         const docxUrl = URL.createObjectURL(docxBlob);
         const docxLink = document.createElement('a');
         docxLink.href = docxUrl;
@@ -538,28 +542,25 @@ export default function App() {
         docxLink.click();
         document.body.removeChild(docxLink);
         URL.revokeObjectURL(docxUrl);
-        downloadedFiles.push(docxFileName);
-      }
-
-      // B. PDF (.pdf) Export
-      if (format === 'pdf' || format === 'both') {
+      } else if (format === 'pdf' && pdfDoc) {
         pdfDoc.save(pdfFileName);
-        downloadedFiles.push(pdfFileName);
       }
 
-      // 4. UPDATE RECORD CONFIRMATION BADGE STATE
+      // 5. UPDATE RECORD CONFIRMATION BADGE STATE
       setLastIssuedRecord({
         ncNumber: docData.ncNumber,
         jobNo: docData.jobNo,
-        docxFileName,
-        pdfFileName,
+        fileType: format,
+        fileName: format === 'docx' ? docxFileName : pdfFileName,
+        docxFileName: format === 'docx' ? docxFileName : null,
+        pdfFileName: format === 'pdf' ? pdfFileName : null,
         imageLink: registerData.imageLink,
         docxLink: registerData.docxLink,
         pdfLink: registerData.pdfLink,
         source: registerData.source
       });
 
-      // 5. ADVANCE TO NEXT NC NUMBER & REFRESH HISTORY
+      // 6. ADVANCE TO NEXT NC NUMBER & REFRESH HISTORY
       if (registerData.nextNcNumber) {
         setNextSuggestedNc(registerData.nextNcNumber);
         setNcNumber(registerData.nextNcNumber);
@@ -570,13 +571,14 @@ export default function App() {
       // Refresh records list
       fetchInitialData();
 
+      const formatLabel = format === 'docx' ? 'Word (.docx)' : 'PDF (.pdf)';
       const driveNote = (registerData.docxLink || registerData.pdfLink)
-        ? ' Archived in Google Drive.'
+        ? ` ${formatLabel} archived in Google Drive.`
         : '';
       const sheetsNote = registerData.source === 'google_sheets'
         ? ' Recorded in Google Sheets.'
         : ' Logged locally.';
-      setSuccessToast(`Saved to Google Drive & Google Sheets! NC #${docData.ncNumber} issued successfully.${sheetsNote}${driveNote}`);
+      setSuccessToast(`Saved to Google Drive & Google Sheets! NC #${docData.ncNumber} (${formatLabel}) issued successfully.${sheetsNote}${driveNote}`);
     } catch (err) {
       console.error(err);
       alert('Error generating document: ' + err.message);
@@ -738,7 +740,7 @@ export default function App() {
                     </span>
                   </div>
                   <p className="text-xs text-emerald-800 mt-0.5">
-                    Job <strong>{lastIssuedRecord.jobNo}</strong> logged to Google Sheets <code className="bg-white/80 px-1 py-0.5 rounded font-mono text-emerald-900">NCR_Logs</code> with report files archived to Drive.
+                    Job <strong>{lastIssuedRecord.jobNo}</strong> logged to Google Sheets <code className="bg-white/80 px-1 py-0.5 rounded font-mono text-emerald-900">NCR_Logs</code> with {lastIssuedRecord.fileType === 'pdf' ? 'PDF report' : 'Word report'} archived to Drive.
                   </p>
                 </div>
               </div>
@@ -1276,60 +1278,52 @@ export default function App() {
                 </div>
               </div>
 
-              {/* DUAL EXPORT BUTTONS: WORD (.docx) & PDF (.pdf) */}
+              {/* ACTION BUTTONS: DOWNLOAD PDF & DOWNLOAD WORD (.docx) */}
               <div className="pt-2 space-y-2.5">
-                {/* Primary Dual Download Button */}
-                <button
-                  type="button"
-                  onClick={() => handleGenerateReport('both')}
-                  disabled={isGenerating || !!duplicateWarning}
-                  className={`w-full py-3.5 px-6 font-bold text-sm sm:text-base rounded-xl shadow-lg flex items-center justify-center gap-3 transition-all transform active:scale-[0.99] ${
-                    duplicateWarning
-                      ? 'bg-slate-300 text-slate-500 cursor-not-allowed shadow-none'
-                      : 'bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-800 text-white shadow-blue-500/25'
-                  }`}
-                >
-                  <Download className={`w-5 h-5 ${isGenerating && generatingFormat === 'both' ? 'animate-bounce' : ''}`} />
-                  <span>
-                    {isGenerating && generatingFormat === 'both'
-                      ? 'Issuing Report & Generating Files...'
-                      : duplicateWarning
-                      ? `Blocked: NC #${ncNumber} Already Exists`
-                      : `Generate Both Word (.docx) & PDF (.pdf)`}
-                  </span>
-                </button>
-
-                {/* Individual Export Buttons */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  <button
-                    type="button"
-                    onClick={() => handleGenerateReport('docx')}
-                    disabled={isGenerating || !!duplicateWarning}
-                    className={`py-2.5 px-4 rounded-xl border font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-sm ${
-                      duplicateWarning
-                        ? 'bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed'
-                        : 'bg-white hover:bg-blue-50 border-blue-300 text-blue-700 hover:border-blue-400'
-                    }`}
-                  >
-                    <FileText className="w-4 h-4 text-blue-600" />
-                    <span>
-                      {isGenerating && generatingFormat === 'docx' ? 'Generating DOCX...' : 'Download Word (.docx)'}
-                    </span>
-                  </button>
-
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {/* Download PDF Action Button */}
                   <button
                     type="button"
                     onClick={() => handleGenerateReport('pdf')}
                     disabled={isGenerating || !!duplicateWarning}
-                    className={`py-2.5 px-4 rounded-xl border font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-sm ${
+                    className={`py-3.5 px-5 rounded-xl font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-md transition-all transform active:scale-[0.99] ${
                       duplicateWarning
-                        ? 'bg-slate-100 border-slate-200 text-slate-400 cursor-not-allowed'
-                        : 'bg-white hover:bg-rose-50 border-rose-300 text-rose-700 hover:border-rose-400'
+                        ? 'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none'
+                        : isGenerating && generatingFormat === 'pdf'
+                        ? 'bg-rose-700 text-white shadow-rose-500/20'
+                        : 'bg-gradient-to-r from-rose-600 via-rose-700 to-red-700 hover:from-rose-700 hover:to-red-800 text-white shadow-rose-500/25'
                     }`}
                   >
-                    <Download className="w-4 h-4 text-rose-600" />
+                    <Download className={`w-5 h-5 ${isGenerating && generatingFormat === 'pdf' ? 'animate-bounce' : ''}`} />
                     <span>
-                      {isGenerating && generatingFormat === 'pdf' ? 'Generating PDF...' : 'Download PDF (.pdf)'}
+                      {isGenerating && generatingFormat === 'pdf'
+                        ? 'Generating & Archiving PDF...'
+                        : duplicateWarning
+                        ? `Blocked: NC #${ncNumber}`
+                        : 'Download PDF'}
+                    </span>
+                  </button>
+
+                  {/* Download Word (.docx) Action Button */}
+                  <button
+                    type="button"
+                    onClick={() => handleGenerateReport('docx')}
+                    disabled={isGenerating || !!duplicateWarning}
+                    className={`py-3.5 px-5 rounded-xl font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-md transition-all transform active:scale-[0.99] ${
+                      duplicateWarning
+                        ? 'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none'
+                        : isGenerating && generatingFormat === 'docx'
+                        ? 'bg-blue-700 text-white shadow-blue-500/20'
+                        : 'bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-800 text-white shadow-blue-500/25'
+                    }`}
+                  >
+                    <FileText className={`w-5 h-5 ${isGenerating && generatingFormat === 'docx' ? 'animate-pulse' : ''}`} />
+                    <span>
+                      {isGenerating && generatingFormat === 'docx'
+                        ? 'Generating & Archiving Word...'
+                        : duplicateWarning
+                        ? `Blocked: NC #${ncNumber}`
+                        : 'Download Word (.docx)'}
                     </span>
                   </button>
                 </div>
