@@ -153,15 +153,17 @@ export function generateNcrPdf(data) {
   const signHeaderHeight = 6.5;
   const signBoxHeight = 24;
 
-  // Signature Headers
-  doc.setFillColor(248, 250, 252);
+  // Signature Headers - Clean white background (#FFFFFF) with crisp black bold text and black borders
+  doc.setLineWidth(0.35);
+  doc.setDrawColor(0, 0, 0);
+  doc.setFillColor(255, 255, 255);
   doc.rect(marginX, currentY, signColWidth, signHeaderHeight, 'FD');
+  doc.rect(marginX + signColWidth, currentY, signColWidth, signHeaderHeight, 'FD');
+
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(8.5);
-  doc.setTextColor(30, 41, 59);
+  doc.setTextColor(0, 0, 0);
   doc.text('QUALITY SIGN', marginX + signColWidth / 2, currentY + 4.5, { align: 'center' });
-
-  doc.rect(marginX + signColWidth, currentY, signColWidth, signHeaderHeight, 'FD');
   doc.text('RESPONSIBLE SIGN', marginX + signColWidth * 1.5, currentY + 4.5, { align: 'center' });
 
   currentY += signHeaderHeight;
@@ -171,29 +173,38 @@ export function generateNcrPdf(data) {
   doc.rect(marginX, currentY, signColWidth, signBoxHeight, 'FD');
   doc.rect(marginX + signColWidth, currentY, signColWidth, signBoxHeight, 'FD');
 
+  // Helper to render signature proportionally enlarged and centered (up to 52mm x 20mm)
+  const renderSignatureInCell = (dataUrl, colX) => {
+    try {
+      const imgProps = doc.getImageProperties(dataUrl);
+      const aspect = imgProps.width / imgProps.height;
+      const maxW = 52; // 52mm
+      const maxH = 20; // 20mm
+
+      let drawW = maxW;
+      let drawH = drawW / aspect;
+
+      if (drawH > maxH) {
+        drawH = maxH;
+        drawW = drawH * aspect;
+      }
+
+      const imgX = colX + (signColWidth - drawW) / 2;
+      const imgY = currentY + (signBoxHeight - drawH) / 2;
+      doc.addImage(dataUrl, 'PNG', imgX, imgY, drawW, drawH);
+    } catch (err) {
+      console.warn('Error adding signature to PDF:', err);
+    }
+  };
+
   // Embed Quality Sign if present
   if (data.qualitySign) {
-    try {
-      doc.addImage(data.qualitySign, 'PNG', marginX + (signColWidth - 45) / 2, currentY + 2, 45, 20);
-    } catch (err) {
-      console.warn('Error adding quality sign to PDF:', err);
-    }
+    renderSignatureInCell(data.qualitySign, marginX);
   }
 
   // Embed Responsible Sign if present
   if (data.responsibleSign) {
-    try {
-      doc.addImage(
-        data.responsibleSign,
-        'PNG',
-        marginX + signColWidth + (signColWidth - 45) / 2,
-        currentY + 2,
-        45,
-        20
-      );
-    } catch (err) {
-      console.warn('Error adding responsible sign to PDF:', err);
-    }
+    renderSignatureInCell(data.responsibleSign, marginX + signColWidth);
   }
 
   // Footer Page 1
@@ -330,19 +341,24 @@ export function generateNcrPdf(data) {
 
   doc.setLineWidth(0.35);
   doc.setDrawColor(0, 0, 0);
-  doc.setFillColor(248, 250, 252);
+  doc.setFillColor(255, 255, 255);
 
+  // Draw all three header boxes first with clean white background and black borders
   doc.rect(marginX, p2Y, sign3ColWidth, sign3HeaderHeight, 'FD');
-  doc.text('RESPONSIBLE PERSON', marginX + sign3ColWidth / 2, p2Y + 4.2, { align: 'center' });
-
   doc.rect(marginX + sign3ColWidth, p2Y, sign3ColWidth, sign3HeaderHeight, 'FD');
-  doc.text('QUALITY', marginX + sign3ColWidth * 1.5, p2Y + 4.2, { align: 'center' });
-
   doc.rect(marginX + sign3ColWidth * 2, p2Y, sign3ColWidth, sign3HeaderHeight, 'FD');
+
+  // Draw header labels in crisp black bold text
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8.5);
+  doc.setTextColor(0, 0, 0);
+  doc.text('RESPONSIBLE PERSON', marginX + sign3ColWidth / 2, p2Y + 4.2, { align: 'center' });
+  doc.text('QUALITY', marginX + sign3ColWidth * 1.5, p2Y + 4.2, { align: 'center' });
   doc.text('PLANT DIRECTOR', marginX + sign3ColWidth * 2.5, p2Y + 4.2, { align: 'center' });
 
   p2Y += sign3HeaderHeight;
 
+  // Blank signature boxes for physical sign-off
   doc.setFillColor(255, 255, 255);
   doc.rect(marginX, p2Y, sign3ColWidth, sign3BoxHeight, 'FD');
   doc.rect(marginX + sign3ColWidth, p2Y, sign3ColWidth, sign3BoxHeight, 'FD');

@@ -28,9 +28,9 @@ function dataUrlToUint8Array(dataUrl) {
 }
 
 /**
- * Creates inline drawing XML for a signature image.
+ * Creates inline drawing XML for a signature image (~180px x 75px).
  */
-function createSignatureDrawingXml(relId, docPrId, widthEmu = 1400000, heightEmu = 480000) {
+function createSignatureDrawingXml(relId, docPrId, widthEmu = 1714500, heightEmu = 714375) {
   return `<w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="${widthEmu}" cy="${heightEmu}"/><wp:effectExtent l="0" t="0" r="0" b="0"/><wp:docPr id="${docPrId}" name="Sign ${docPrId}"/><wp:cNvGraphicFramePr><a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/></wp:cNvGraphicFramePr><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="${docPrId}" name="Picture ${docPrId}"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="${relId}"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill><pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="${widthEmu}" cy="${heightEmu}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing>`;
 }
 
@@ -196,11 +196,11 @@ export async function generateNcrDocx(data) {
     const table4Regex = /(<w:tbl[\s\S]*?QUALITY SIGN[\s\S]*?<w:tr[^>]*>\s*<w:trPr><w:trHeight w:val="2052"\/><\/w:trPr>\s*)(<w:tc>[\s\S]*?<\/w:tc>\s*<w:tc>[\s\S]*?<\/w:tc>)(\s*<\/w:tr>\s*<\/w:tbl>)/;
 
     const cell0Content = hasQualitySign
-      ? `<w:tc><w:tcPr><w:tcW w:w="4508" w:type="dxa"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="3C8BDFD2" w14:textId="77777777"><w:pPr><w:jc w:val="center"/></w:pPr><w:r>${createSignatureDrawingXml('rIdQualitySign', 301, 1400000, 480000)}</w:r></w:p></w:tc>`
+      ? `<w:tc><w:tcPr><w:tcW w:w="4508" w:type="dxa"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="3C8BDFD2" w14:textId="77777777"><w:pPr><w:jc w:val="center"/></w:pPr><w:r>${createSignatureDrawingXml('rIdQualitySign', 301, 1714500, 714375)}</w:r></w:p></w:tc>`
       : `<w:tc><w:tcPr><w:tcW w:w="4508" w:type="dxa"/></w:tcPr><w:p w14:paraId="3C8BDFD2" w14:textId="77777777" w:rsidR="00AD6FEC" w:rsidRDefault="00AD6FEC" w:rsidP="00AD6FEC"/></w:tc>`;
 
     const cell1Content = hasRespSign
-      ? `<w:tc><w:tcPr><w:tcW w:w="4508" w:type="dxa"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="5D165F9E" w14:textId="77777777"><w:pPr><w:jc w:val="center"/></w:pPr><w:r>${createSignatureDrawingXml('rIdRespSign', 302, 1400000, 480000)}</w:r></w:p></w:tc>`
+      ? `<w:tc><w:tcPr><w:tcW w:w="4508" w:type="dxa"/><w:vAlign w:val="center"/></w:tcPr><w:p w14:paraId="5D165F9E" w14:textId="77777777"><w:pPr><w:jc w:val="center"/></w:pPr><w:r>${createSignatureDrawingXml('rIdRespSign', 302, 1714500, 714375)}</w:r></w:p></w:tc>`
       : `<w:tc><w:tcPr><w:tcW w:w="4508" w:type="dxa"/></w:tcPr><w:p w14:paraId="5D165F9E" w14:textId="77777777" w:rsidR="00AD6FEC" w:rsidRDefault="00AD6FEC" w:rsidP="00AD6FEC"/></w:tc>`;
 
     docXml = docXml.replace(table4Regex, `$1${cell0Content}${cell1Content}$3`);

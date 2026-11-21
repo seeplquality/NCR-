@@ -1,6 +1,69 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Eraser, Check, PenLine } from 'lucide-react';
 
+/**
+ * Helper to crop/trim transparent margins around signature strokes so the
+ * signature fills the document cell clearly without looking tiny.
+ */
+function trimSignatureCanvas(canvas) {
+  const ctx = canvas.getContext('2d');
+  const width = canvas.width;
+  const height = canvas.height;
+
+  const imgData = ctx.getImageData(0, 0, width, height);
+  const data = imgData.data;
+
+  let minX = width;
+  let minY = height;
+  let maxX = 0;
+  let maxY = 0;
+  let hasInk = false;
+
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const alpha = data[(y * width + x) * 4 + 3];
+      if (alpha > 15) {
+        hasInk = true;
+        if (x < minX) minX = x;
+        if (x > maxX) maxX = x;
+        if (y < minY) minY = y;
+        if (y > maxY) maxY = y;
+      }
+    }
+  }
+
+  if (!hasInk) {
+    return null;
+  }
+
+  // Add 10px padding around the strokes
+  const padding = 10;
+  minX = Math.max(0, minX - padding);
+  minY = Math.max(0, minY - padding);
+  maxX = Math.min(width, maxX + padding);
+  maxY = Math.min(height, maxY + padding);
+
+  const trimW = maxX - minX;
+  const trimH = maxY - minY;
+
+  if (trimW <= 0 || trimH <= 0) {
+    return null;
+  }
+
+  const trimmedCanvas = document.createElement('canvas');
+  trimmedCanvas.width = trimW;
+  trimmedCanvas.height = trimH;
+  const trimCtx = trimmedCanvas.getContext('2d');
+
+  trimCtx.drawImage(
+    canvas,
+    minX, minY, trimW, trimH,
+    0, 0, trimW, trimH
+  );
+
+  return trimmedCanvas.toDataURL('image/png');
+}
+
 export default function SignaturePad({
   label = 'SIGNATURE',
   signatoryTitle = '',
@@ -10,7 +73,7 @@ export default function SignaturePad({
   const [isDrawing, setIsDrawing] = useState(false);
   const [hasSignature, setHasSignature] = useState(false);
 
-  // Set up canvas with high-DPI scaling
+  // Set up canvas with high-DPI scaling and bold pen strokes (lineWidth 3.8)
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -25,8 +88,8 @@ export default function SignaturePad({
     ctx.scale(dpr, dpr);
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
-    ctx.strokeStyle = '#0f172a'; // Deep slate ink
-    ctx.lineWidth = 2.5;
+    ctx.strokeStyle = '#000000'; // Crisp bold black ink
+    ctx.lineWidth = 3.8; // Bold, legible stroke
   }, []);
 
   const getCanvasPos = (e) => {
@@ -44,6 +107,11 @@ export default function SignaturePad({
     canvas.setPointerCapture(e.pointerId);
 
     const ctx = canvas.getContext('2d');
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = '#000000';
+    ctx.lineWidth = 3.8;
+
     const pos = getCanvasPos(e);
 
     ctx.beginPath();
@@ -79,7 +147,7 @@ export default function SignaturePad({
       // Ignore if pointer capture already released
     }
 
-    // Export transparent PNG
+    // Export trimmed transparent PNG
     exportPng();
   };
 
@@ -87,15 +155,11 @@ export default function SignaturePad({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    // Check if canvas has non-transparent pixels
-    const ctx = canvas.getContext('2d');
-    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const hasPixels = imgData.data.some((channel, idx) => idx % 4 === 3 && channel > 0);
+    const trimmedUrl = trimSignatureCanvas(canvas);
 
-    if (hasPixels) {
-      const dataUrl = canvas.toDataURL('image/png');
+    if (trimmedUrl) {
       setHasSignature(true);
-      if (onSignatureChange) onSignatureChange(dataUrl);
+      if (onSignatureChange) onSignatureChange(trimmedUrl);
     } else {
       setHasSignature(false);
       if (onSignatureChange) onSignatureChange(null);
@@ -107,7 +171,10 @@ export default function SignaturePad({
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.restore();
 
     setHasSignature(false);
     if (onSignatureChange) onSignatureChange(null);

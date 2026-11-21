@@ -191,7 +191,7 @@ export default function ReportPreview({ formData, annotatedImage }) {
                         <img
                           src={formData.qualitySign}
                           alt="Quality Sign"
-                          className="max-h-12 max-w-[140px] object-contain"
+                          className="max-h-14 max-w-[180px] object-contain"
                         />
                       ) : (
                         <span className="text-slate-300 italic text-[10px]">
@@ -205,7 +205,7 @@ export default function ReportPreview({ formData, annotatedImage }) {
                           <img
                             src={formData.responsibleSign}
                             alt="Responsible Sign"
-                            className="max-h-12 max-w-[140px] object-contain"
+                            className="max-h-14 max-w-[180px] object-contain"
                           />
                         </div>
                       ) : (
