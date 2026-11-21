@@ -18,7 +18,12 @@ A production-ready, mobile-friendly Non-Conformance Report (NCR) web application
    - **Client-Side Compression:** Automatically scales images to max 700px width with 0.8 JPEG quality before uploading, keeping file sizes lightweight (<120 KB) while maintaining crisp detail.
    - **Interactive Canvas Annotation:** Draw red/green circles and freehand markers directly on the defect image to highlight discrepancies.
 
-3. **Digital Touch & Stylus Signatures**
+3. **Installable Progressive Web App (PWA)**
+   - **Android / Chrome:** Click the in-app **"Install App on Phone"** button or browser menu to install directly onto the device home screen as a standalone application.
+   - **iOS / Safari:** Includes built-in iOS install guide (*Share → Add to Home Screen*), running in borderless full-screen standalone mode with native splash themes.
+   - **Auto-Updating Service Worker:** Powered by `vite-plugin-pwa` with automatic cache revalidation for high performance on shop-floor Wi-Fi or mobile data.
+
+4. **Digital Touch & Stylus Signatures**
    - Responsive HTML5 signature pads for **QUALITY SIGN** and **RESPONSIBLE SIGN**.
    - Supports touch gestures, styluses, and mouse input with `touch-action: none` to prevent page scrolling on mobile devices.
    - Embedded seamlessly as transparent PNGs into both the Word table cells and the PDF document.

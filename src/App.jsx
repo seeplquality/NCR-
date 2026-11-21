@@ -26,7 +26,10 @@ import {
   Image as ImageIcon,
   Cloud,
   HardDrive,
-  ExternalLink
+  ExternalLink,
+  Smartphone,
+  Share,
+  X
 } from 'lucide-react';
 
 import defaultOrdersData from './data/defaultOrders.json';
@@ -114,6 +117,72 @@ export default function App() {
   const [lastIssuedRecord, setLastIssuedRecord] = useState(null);
   const [viewMode, setViewMode] = useState('split'); // 'split' or 'form' or 'preview'
   const [cloudStatus, setCloudStatus] = useState({ isConnected: false, source: 'local' });
+
+  // PWA Install state
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [isInstallable, setIsInstallable] = useState(false);
+  const [isIos, setIsIos] = useState(false);
+  const [isStandalone, setIsStandalone] = useState(false);
+  const [showIosInstallModal, setShowIosInstallModal] = useState(false);
+
+  useEffect(() => {
+    // Check if running in standalone mode (already installed as PWA)
+    const checkStandalone = () => {
+      const isStandaloneMode =
+        window.matchMedia('(display-mode: standalone)').matches ||
+        window.navigator.standalone === true ||
+        (document.referrer && document.referrer.includes('android-app://'));
+      setIsStandalone(!!isStandaloneMode);
+    };
+
+    checkStandalone();
+
+    // Detect iOS devices (iPhone, iPad, iPod)
+    const ua = (window.navigator.userAgent || '').toLowerCase();
+    const isIosDevice = /iphone|ipad|ipod/.test(ua) && !window.MSStream;
+    setIsIos(isIosDevice);
+
+    // Listen for beforeinstallprompt event (Android / Chrome / Edge)
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setIsInstallable(true);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    // Listen for appinstalled event
+    const handleAppInstalled = () => {
+      setIsInstallable(false);
+      setDeferredPrompt(null);
+      setIsStandalone(true);
+      setShowIosInstallModal(false);
+    };
+
+    window.addEventListener('appinstalled', handleAppInstalled);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (deferredPrompt) {
+      try {
+        await deferredPrompt.prompt();
+        const choice = await deferredPrompt.userChoice;
+        if (choice && choice.outcome === 'accepted') {
+          setIsInstallable(false);
+        }
+      } catch (err) {
+        console.error('Install prompt error:', err);
+      }
+      setDeferredPrompt(null);
+    } else {
+      setShowIosInstallModal(true);
+    }
+  };
 
   // Format date as DD.MM.YYYY for display and document
   const formattedDate = (() => {
@@ -623,6 +692,20 @@ export default function App() {
 
           {/* Master Excel Upload & Status Controls */}
           <div className="flex items-center gap-2">
+            {/* Install App on Phone Button (hidden if already running in standalone PWA mode) */}
+            {!isStandalone && (
+              <button
+                type="button"
+                onClick={handleInstallClick}
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-800 hover:from-blue-800 hover:to-indigo-900 text-white rounded-lg text-xs font-bold transition-all shadow-sm shadow-blue-500/25 active:scale-95"
+                title="Install SEEPL NCR on Phone Home Screen"
+              >
+                <Smartphone className="w-3.5 h-3.5 text-cyan-300" />
+                <span className="hidden sm:inline">Install App on Phone</span>
+                <span className="sm:hidden">Install</span>
+              </button>
+            )}
+
             <input
               type="file"
               ref={excelInputRef}
@@ -1401,6 +1484,76 @@ export default function App() {
           Saravanan Electricals &amp; Engineering Pvt Ltd • Non-Conformance Report (NCR) System • Built with React, Vite &amp; Tailwind CSS
         </p>
       </footer>
+
+      {/* iOS Safari / Browser PWA Installation Guide Modal */}
+      {showIosInstallModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-200 relative text-slate-800">
+            <button
+              type="button"
+              onClick={() => setShowIosInstallModal(false)}
+              className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-100 transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-xl bg-blue-900 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-blue-900/30">
+                NCR
+              </div>
+              <div>
+                <h3 className="font-bold text-slate-900 text-base">Install SEEPL NCR</h3>
+                <p className="text-xs text-slate-500">Run as full-screen native mobile app</p>
+              </div>
+            </div>
+
+            {isIos ? (
+              <div className="space-y-3 text-xs text-slate-600">
+                <p className="font-medium text-slate-700">Follow these steps in Safari on iPhone or iPad:</p>
+                <div className="flex items-start gap-2.5 p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                  <div className="w-6 h-6 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0 font-bold text-xs mt-0.5">
+                    1
+                  </div>
+                  <div>
+                    Tap the <strong className="text-slate-900">Share</strong> button in Safari's bottom toolbar (<Share className="w-3.5 h-3.5 inline text-blue-600 mx-0.5" />).
+                  </div>
+                </div>
+                <div className="flex items-start gap-2.5 p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                  <div className="w-6 h-6 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0 font-bold text-xs mt-0.5">
+                    2
+                  </div>
+                  <div>
+                    Scroll down and tap <strong className="text-slate-900">Add to Home Screen</strong>.
+                  </div>
+                </div>
+                <div className="flex items-start gap-2.5 p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+                  <div className="w-6 h-6 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0 font-bold text-xs mt-0.5">
+                    3
+                  </div>
+                  <div>
+                    Tap <strong className="text-slate-900">Add</strong> in the top-right corner to launch SEEPL NCR anytime from your home screen.
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-3 text-xs text-slate-600">
+                <p className="font-medium text-slate-700">To install on your phone or computer:</p>
+                <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl text-blue-900">
+                  Tap the browser menu (<strong>⋮</strong> or <strong>Share</strong>) and choose <strong>"Add to Home screen"</strong> or <strong>"Install App"</strong>.
+                </div>
+              </div>
+            )}
+
+            <button
+              type="button"
+              onClick={() => setShowIosInstallModal(false)}
+              className="mt-5 w-full py-2.5 bg-blue-900 hover:bg-blue-950 text-white rounded-xl font-bold text-xs shadow-md transition-all"
+            >
+              Got it
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

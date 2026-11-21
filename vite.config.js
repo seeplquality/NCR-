@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
 import workOrdersHandler from './api/work-orders.js';
 import nextNcHandler from './api/next-nc.js';
 import ncrHandler from './api/ncr.js';
@@ -66,7 +67,54 @@ function vercelApiDevPlugin() {
 }
 
 export default defineConfig({
-  plugins: [react(), vercelApiDevPlugin()],
+  plugins: [
+    react(),
+    vercelApiDevPlugin(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      includeAssets: [
+        'apple-touch-icon.png',
+        'pwa-192x192.png',
+        'pwa-512x512.png',
+        'default_work_orders.xlsx',
+        'template.docx'
+      ],
+      manifest: {
+        name: 'SEEPL NCR Generator',
+        short_name: 'SEEPL NCR',
+        description: 'Non-Conformance Report Generator',
+        theme_color: '#1e3a8a',
+        background_color: '#ffffff',
+        display: 'standalone',
+        orientation: 'portrait',
+        start_url: '/',
+        icons: [
+          {
+            src: '/pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: '/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any'
+          },
+          {
+            src: '/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
+          }
+        ]
+      },
+      workbox: {
+        maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,xlsx,docx}']
+      }
+    })
+  ],
   server: {
     port: 5000,
     host: true
