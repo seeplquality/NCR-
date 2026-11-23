@@ -155,64 +155,68 @@ export default function ReportPreview({ formData, annotatedImage }) {
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="p-2 h-44 sm:h-52 flex items-center justify-center bg-slate-50/30">
-                      {annotatedImage ? (
-                        <img
-                          src={annotatedImage}
-                          alt="Annotated Defect"
-                          className="max-h-40 sm:max-h-48 max-w-full object-contain rounded border border-slate-200"
-                        />
-                      ) : (
-                        <span className="text-slate-400 italic text-xs">
-                          (No defect image uploaded)
-                        </span>
-                      )}
+                    <td className="p-2 h-44 sm:h-52 text-center align-middle bg-slate-50/30 overflow-hidden">
+                      <div className="w-full h-full flex items-center justify-center overflow-hidden">
+                        {annotatedImage ? (
+                          <img
+                            src={annotatedImage}
+                            alt="Annotated Defect"
+                            className="max-h-40 sm:max-h-48 max-w-full w-auto h-auto object-contain rounded border border-slate-200 block mx-auto"
+                          />
+                        ) : (
+                          <span className="text-slate-400 italic text-xs">
+                            (No defect image uploaded)
+                          </span>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 </tbody>
               </table>
 
               {/* Table 4: Quality Sign & Responsible Sign */}
-              <table className="w-full border-collapse border border-black text-center">
+              <table className="w-full table-fixed border-collapse border border-black text-center">
                 <thead>
                   <tr className="border-b border-black bg-slate-50/50">
-                    <th className="w-1/2 border-r border-black p-1.5 font-bold uppercase">
+                    <th className="w-1/2 border-r border-black p-1.5 font-bold uppercase text-[11px]">
                       QUALITY SIGN
                     </th>
-                    <th className="w-1/2 p-1.5 font-bold uppercase">
+                    <th className="w-1/2 p-1.5 font-bold uppercase text-[11px]">
                       RESPONSIBLE SIGN
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="border-r border-black h-16 p-2 flex items-center justify-center">
-                      {formData.qualitySign ? (
-                        <img
-                          src={formData.qualitySign}
-                          alt="Quality Sign"
-                          className="max-h-14 max-w-[180px] object-contain"
-                        />
-                      ) : (
-                        <span className="text-slate-300 italic text-[10px]">
-                          (Unsigned)
-                        </span>
-                      )}
+                    <td className="w-1/2 border-r border-black h-16 sm:h-20 p-1.5 overflow-hidden align-middle">
+                      <div className="w-full h-full flex items-center justify-center overflow-hidden">
+                        {formData.qualitySign ? (
+                          <img
+                            src={formData.qualitySign}
+                            alt="Quality Sign"
+                            className="max-w-full max-h-full w-auto h-auto object-contain block mx-auto"
+                          />
+                        ) : (
+                          <span className="text-slate-300 italic text-[10px]">
+                            (Unsigned)
+                          </span>
+                        )}
+                      </div>
                     </td>
-                    <td className="h-16 p-2 text-center align-middle">
-                      {formData.responsibleSign ? (
-                        <div className="flex items-center justify-center h-full">
+                    <td className="w-1/2 h-16 sm:h-20 p-1.5 overflow-hidden align-middle">
+                      <div className="w-full h-full flex items-center justify-center overflow-hidden">
+                        {formData.responsibleSign ? (
                           <img
                             src={formData.responsibleSign}
                             alt="Responsible Sign"
-                            className="max-h-14 max-w-[180px] object-contain"
+                            className="max-w-full max-h-full w-auto h-auto object-contain block mx-auto"
                           />
-                        </div>
-                      ) : (
-                        <span className="text-slate-300 italic text-[10px]">
-                          (Unsigned)
-                        </span>
-                      )}
+                        ) : (
+                          <span className="text-slate-300 italic text-[10px]">
+                            (Unsigned)
+                          </span>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 </tbody>
